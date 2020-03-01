@@ -36,11 +36,14 @@ seq:
   - id: show_score
     type: u1
     if: version >= 7
+
   - id: bg
     type: u1
   - id: bg_color
     type: u4
     doc: Assumedly RGBA, needs testing though
+    if: version >= 28
+
   - id: size_x
     type: u2
   - id: size_y
@@ -51,60 +54,128 @@ seq:
   - id: size_y_2
     type: u2
     if: version >= 12
+
   - id: velocity_iterations
     type: u1
   - id: position_iterations
     type: u1
   - id: final_score
     type: u4
+
   - id: sandbox_cam_x
     type: f4
   - id: sandbox_cam_y
     type: f4
   - id: sandbox_cam_zoom
     type: f4
+
   - id: gravity_x
     type: f4
     if: version >= 3
   - id: gravity_y
     type: f4
     if: version >= 3
-  - id: bounds
+
+  - id: bounds_x1
     type: f4
-    repeat: expr
-    repeat-expr: 4
     if: version >= 13
+  - id: bounds_y1
+    type: f4
+    if: version >= 13
+  - id: bounds_x2
+    type: f4
+    if: version >= 13
+  - id: bounds_y2
+    type: f4
+    if: version >= 13
+
   - id: flags
     type: u8
     if: version >= 9
     doc: TODO
+
   - id: prismatic_tolerance
     type: f4
     if: version >= 26
   - id: pivot_tolerance
     type: f4
     if: version >= 26
+
   - id: seed
     type: u8
     if: version >= 28
   - id: adventure_id
     type: u4
     if: version >= 28
-  - id: misc_stuff
-    type: u4
-    repeat: expr
-    repeat-expr: 7
+
+  - id: linear_damping
+    type: f4
     if: version >= 28
+  - id: angular_damping
+    type: f4
+    if: version >= 28
+  - id: joint_friction
+    type: f4
+    if: version >= 28
+  - id: body_absorb_time
+    type: f4
+    if: version >= 28
+  - id: respawn_cooldown
+    type: f4
+    if: version >= 28
+  - id: compression_buf_size
+    type: u8
+    if: version >= 28
+
   - id: name
     type: str
     size: name_size
     encoding: UTF-8
-  - id: unknown_padding
+
+  - id: unknown_header
     size: 128*128
+    if: version >= 6
+
   - id: descr
     type: str
     size: descr_size
     encoding: UTF-8
+
+  - id: group_count_pre28
+    type: u2
+    if: version < 28
+  - id: entity_count_pre28
+    type: u2
+    if: version < 28
+  - id: connection_count_pre28
+    type: u2
+    if: version < 28
+  - id: cable_count_pre28
+    type: u2
+    if: version < 28
+
+  - id: group_count
+    type: u4
+    if: version >= 28
+  - id: entity_count
+    type: u4
+    if: version >= 28
+  - id: connection_count
+    type: u4
+    if: version >= 28
+  - id: cable_count
+    type: u4
+    if: version >= 28
+  - id: chunk_count
+    type: u4
+    if: version >= 28
+  - id: state_size
+    type: u4
+    if: version >= 28
+  - id: gencount
+    type: u4
+    if: version >= 28
+
 enums:
   level_version:
     0: any
