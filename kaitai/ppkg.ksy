@@ -12,9 +12,9 @@ seq:
     type: str
     size: 0xFF
     encoding: UTF-8
-  - id: unknown_e926ff
+  - id: levels_unlocked
     type: u1
-    doc: Seems to always be 2.
+    doc: The amount of incomplete levels that are available at a time. Default is 2.
   - id: unknown_798b9a
     type: u1
     doc: Seems to always be 0.
