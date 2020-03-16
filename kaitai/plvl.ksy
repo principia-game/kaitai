@@ -176,6 +176,12 @@ seq:
     type: u4
     if: version >= 28
 
+  - id: level_buffer
+    size-eos: true
+    doc: >
+      zlib compressed level buffer data.
+      In earlier level versions (TODO: what versions?), the level buffer is uncompressed.
+
 enums:
   level_version:
     0: any
