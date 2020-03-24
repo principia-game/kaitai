@@ -132,9 +132,12 @@ seq:
     size: name_size
     encoding: UTF-8
 
-  - id: unknown_header
+  - id: level_thumbnail
     size: 128*128
     if: version >= 6
+    doc: >
+      A 128x128 8-bit grayscale bitmap, which is a screenshot of the level where it last was saved.
+      It is used for package thumbnails.
 
   - id: descr
     type: str
