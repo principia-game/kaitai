@@ -220,4 +220,4 @@ enums:
   level_type:
     0: puzzle
     1: adventure
-    2: creative
+    2: custom
